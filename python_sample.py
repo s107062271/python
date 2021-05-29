@@ -71,7 +71,7 @@ def initWeights(network_struct):
     return weight_list
 
 
-def loadData(image_file_path, label_file_path):
+def loaddata(image_file_path, label_file_path):
     # Every COLUMN (NOT row) in 'x_part' is a training/testing instance.
     # Turn labels in y_part into one-hot vectors.
     return readImageLabel(image_file_path, "image"), readImageLabel(label_file_path, "label")
@@ -205,7 +205,7 @@ def forwardPropagate(model, data_x_part):
 def backwardPropagate(model, Intermediates, truth_y):
     # Prepare 'Z' and 'A' for convenient notation which would be used later.
     Z, A = {}, []
-    for i in range(len(Intermediates))
+    for i in range(len(Intermediates)): #error
         Z[i-1] = Intermediates[i]['pre_act']
         A[i-1] = Intermediates[i]['post_act']
     
@@ -290,7 +290,7 @@ def avoidZeroValue(numpy_ndarray):
 def printEpochAndLoss(model, data_x_part, data_y_part, epoch):
     ce_loss = 0.0
     predict_y_s = inference(model, data_x_part)
-    for i in range(predict_y_s.shape[1])
+    for i in range(predict_y_s.shape[1]): #error
         ce_loss += FUNC.crossEntropy(predict_y_s[:, i], data_y_part[:, i])
     print("Epoch=%d, Total loss=%.2f"%(int(epoch), ce_loss/epoch))
 
@@ -306,7 +306,7 @@ def generatePkFromSource():
     print("Open source files.")
     # Prepare absolute paths of input files
     working_dir           = pathlib.Path().absolute()
-    train_image_file_path = os.path.join(working_dir, "train-images.idx3-ubyte")
+    train_image_file_path = os.path.join(working_dir, "train-images-idx3-ubyte.gz") #error
     train_label_file_path = os.path.join(working_dir, "tn-labels.idx1-ubyte")
     test_image_file_path  = os.path.join(working_dir, "tk-images.idx3-ubyte")
     test_label_file_path  = os.path.join(working_dir, "t10k-labels.idx1-ubyte")
